@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>P Lokesh | Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #0a0f1e; color: #e0e6f0; scroll-behavior: smooth; }
+  nav { position: fixed; top: 0; width: 100%; background: rgba(10,15,30,0.95); backdrop-filter: blur(10px); padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; border-bottom: 1px solid #1e3a5f; }
+  .nav-logo { font-size: 20px; font-weight: 700; color: #4db8ff; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 22px; list-style: none; flex-wrap: wrap; }
+  .nav-links a { color: #a0b8d0; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: #4db8ff; }
+  section { padding: 80px 60px; max-width: 1000px; margin: 0 auto; }
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px; }
+  .hero-tag { font-size: 13px; color: #4db8ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero-name { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff, #4db8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero-role { font-size: 22px; color: #7aa0c0; margin-bottom: 24px; }
+  .hero-desc { font-size: 16px; color: #8090a8; max-width: 540px; line-height: 1.8; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: #4db8ff; color: #0a0f1e; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px; border: none; cursor: pointer; }
+  .btn-primary:hover { background: #7acfff; }
+  .btn-outline { background: transparent; color: #4db8ff; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px; border: 1.5px solid #4db8ff; cursor: pointer; }
+  .btn-outline:hover { background: #4db8ff22; }
+  .section-title { font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+  .section-line { width: 48px; height: 3px; background: #4db8ff; border-radius: 2px; margin-bottom: 40px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .about-text { font-size: 15px; color: #8090a8; line-height: 1.9; }
+  .about-info { display: flex; flex-direction: column; gap: 14px; }
+  .info-row { display: flex; gap: 12px; align-items: center; font-size: 14px; }
+  .info-label { color: #4db8ff; font-weight: 600; min-width: 90px; }
+  .info-val { color: #c0d0e0; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; }
+  .skill-card { background: #0d1627; border: 1px solid #1e3a5f; border-radius: 10px; padding: 18px 14px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .skill-card:hover { border-color: #4db8ff; transform: translateY(-3px); }
+  .skill-icon { font-size: 26px; margin-bottom: 8px; }
+  .skill-name { font-size: 13px; color: #a0b8d0; font-weight: 500; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .project-card { background: #0d1627; border: 1px solid #1e3a5f; border-radius: 12px; padding: 24px; transition: border-color 0.2s, transform 0.2s; }
+  .project-card:hover { border-color: #4db8ff; transform: translateY(-4px); }
+  .project-tag { font-size: 11px; color: #4db8ff; background: #0a2040; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+  .project-title { font-size: 17px; font-weight: 600; color: #e0e6f0; margin-bottom: 8px; }
+  .project-desc { font-size: 13px; color: #6a80a0; line-height: 1.7; margin-bottom: 16px; }
+  .project-techs { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech-badge { font-size: 11px; color: #4db8ff; background: #0a2040; padding: 3px 10px; border-radius: 20px; border: 1px solid #1e3a5f; }
+  .exp-card { background: #0d1627; border: 1px solid #1e3a5f; border-radius: 12px; padding: 28px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .exp-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #4db8ff; border-radius: 4px 0 0 4px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 6px; flex-wrap: wrap; gap: 10px; }
+  .exp-role { font-size: 18px; font-weight: 700; color: #e0e6f0; }
+  .exp-badge { font-size: 12px; color: #4db8ff; background: #0a2040; padding: 4px 14px; border-radius: 20px; border: 1px solid #1e3a5f; white-space: nowrap; }
+  .exp-company { font-size: 15px; color: #4db8ff; margin-bottom: 16px; font-weight: 500; }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-points li { font-size: 14px; color: #7a90a8; line-height: 1.7; padding-left: 20px; position: relative; }
+  .exp-points li::before { content: '▹'; position: absolute; left: 0; color: #4db8ff; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .exp-tag { font-size: 11px; color: #4db8ff; background: #0a2040; padding: 3px 12px; border-radius: 20px; border: 1px solid #1e3a5f; }
+  .edu-card { background: #0d1627; border: 1px solid #1e3a5f; border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: start; }
+  .edu-degree { font-size: 16px; font-weight: 600; color: #e0e6f0; margin-bottom: 4px; }
+  .edu-school { font-size: 14px; color: #4db8ff; margin-bottom: 4px; }
+  .edu-detail { font-size: 13px; color: #6a80a0; }
+  .edu-year { font-size: 13px; color: #4db8ff; background: #0a2040; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .contact-card { background: #0d1627; border: 1px solid #1e3a5f; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 14px; text-decoration: none; transition: border-color 0.2s; }
+  .contact-card:hover { border-color: #4db8ff; }
+  .contact-icon { font-size: 22px; }
+  .contact-label { font-size: 12px; color: #6a80a0; }
+  .contact-val { font-size: 13px; color: #c0d0e0; font-weight: 500; word-break: break-all; }
+  footer { text-align: center; padding: 30px; font-size: 13px; color: #3a5070; border-top: 1px solid #1e3a5f; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PL</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-tag">👋 Hello, World!</div>
+  <div class="hero-name">P Lokesh</div>
+  <div class="hero-role">Software Engineer & Team Leader</div>
+  <div class="hero-desc">Passionate Python developer and team leader with real-world experience in leadership and communication. Currently pursuing Int M.Tech at VIT-AP, building projects and aiming for top software internships.</div>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View My Projects</a>
+    <a href="#contact" class="btn-outline">Contact Me</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-title">About Me</div>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      Hi! I'm Lokesh, a 2nd year Integrated M.Tech student in Software Engineering at VIT-AP University, from Parumala village, Jogulamba Gadwal, Telangana.<br><br>
+      Beyond coding, I have real-world experience as a Team Leader at Forever Living Products, where I developed strong communication, leadership, and people management skills — something most students my age don't have.<br><br>
+      My goal is to combine my technical skills with my leadership experience to become a well-rounded software developer.
+    </div>
+    <div class="about-info">
+      <div class="info-row"><span class="info-label">🎓 Degree</span><span class="info-val">Int M.Tech – Software Engg</span></div>
+      <div class="info-row"><span class="info-label">🏫 College</span><span class="info-val">VIT-AP University</span></div>
+      <div class="info-row"><span class="info-label">📍 From</span><span class="info-val">Jogulamba Gadwal, TG</span></div>
+      <div class="info-row"><span class="info-label">💻 Language</span><span class="info-val">Python (primary)</span></div>
+      <div class="info-row"><span class="info-label">👥 Role</span><span class="info-val">Team Lead @ Forever Living</span></div>
+      <div class="info-row"><span class="info-label">🎯 Goal</span><span class="info-val">Software Developer / ML Engineer</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-title">Experience</div>
+  <div class="section-line"></div>
+  <div class="exp-card">
+    <div class="exp-header">
+      <div class="exp-role">Team Leader</div>
+      <span class="exp-badge">🟢 Currently Working</span>
+    </div>
+    <div class="exp-company">Forever Living Products · Multilevel Marketing</div>
+    <ul class="exp-points">
+      <li>Leading and motivating a team to achieve sales targets and business goals consistently</li>
+      <li>Developed strong communication skills by presenting products and opportunities to new clients</li>
+      <li>Managed team performance, tracked progress, and provided guidance and mentorship to members</li>
+      <li>Built a network of contacts and improved interpersonal and negotiation skills in real-world settings</li>
+      <li>Gained hands-on experience in business strategy, goal-setting, and people management at age 19</li>
+    </ul>
+    <div class="exp-tags">
+      <span class="exp-tag">Team Leadership</span>
+      <span class="exp-tag">Communication</span>
+      <span class="exp-tag">People Management</span>
+      <span class="exp-tag">Sales Strategy</span>
+      <span class="exp-tag">Mentoring</span>
+      <span class="exp-tag">Networking</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title">Skills</div>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
+    <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Java</div></div>
+    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML & CSS</div></div>
+    <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL Basics</div></div>
+    <div class="skill-card"><div class="skill-icon">🐙</div><div class="skill-name">Git & GitHub</div></div>
+    <div class="skill-card"><div class="skill-icon">🧠</div><div class="skill-name">DSA (Learning)</div></div>
+    <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Team Leadership</div></div>
+    <div class="skill-card"><div class="skill-icon">🗣️</div><div class="skill-name">Communication</div></div>
+    <div class="skill-card"><div class="skill-icon">🤝</div><div class="skill-name">People Skills</div></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">ML (Exploring)</div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-title">Projects</div>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag">Python</span>
+      <div class="project-title">To-Do List App</div>
+      <div class="project-desc">A command-line task manager to add, view, update, and delete tasks. Helped me understand data structures and file handling.</div>
+      <div class="project-techs"><span class="tech-badge">Python</span><span class="tech-badge">File I/O</span></div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Python</span>
+      <div class="project-title">Calculator</div>
+      <div class="project-desc">A fully functional calculator with basic and scientific operations built using Python with a clean CLI interface.</div>
+      <div class="project-techs"><span class="tech-badge">Python</span><span class="tech-badge">Math Module</span></div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Python</span>
+      <div class="project-title">Interest Calculator</div>
+      <div class="project-desc">Calculates both simple and compound interest based on user inputs like principal, rate, and time. Great for understanding real-world finance logic.</div>
+      <div class="project-techs"><span class="tech-badge">Python</span><span class="tech-badge">Math Logic</span></div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Python</span>
+      <div class="project-title">Rock Paper Scissors</div>
+      <div class="project-desc">An interactive CLI game where you play against the computer. Includes score tracking, random computer moves, and replay option.</div>
+      <div class="project-techs"><span class="tech-badge">Python</span><span class="tech-badge">Random Module</span><span class="tech-badge">Game Logic</span></div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Coming Soon 🚀</span>
+      <div class="project-title">Weather App</div>
+      <div class="project-desc">Fetches real-time weather using OpenWeatherMap API. Currently in development — learning APIs and JSON handling.</div>
+      <div class="project-techs"><span class="tech-badge">Python</span><span class="tech-badge">REST API</span><span class="tech-badge">JSON</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-title">Education</div>
+  <div class="section-line"></div>
+  <div class="edu-card">
+    <div>
+      <div class="edu-degree">Integrated M.Tech – Software Engineering</div>
+      <div class="edu-school">VIT-AP University, Amaravati</div>
+      <div class="edu-detail">5-Year Program &nbsp;|&nbsp; CGPA: Updating soon</div>
+    </div>
+    <span class="edu-year">2024 – 2029</span>
+  </div>
+  <div class="edu-card">
+    <div>
+      <div class="edu-degree">Intermediate (MPC)</div>
+      <div class="edu-school">Telangana State Board</div>
+      <div class="edu-detail">Parumala, Jogulamba Gadwal</div>
+    </div>
+    <span class="edu-year">Completed 2024</span>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title">Contact</div>
+  <div class="section-line"></div>
+  <div class="contact-grid">
+    <a href="mailto:lokeshlokip2006@gmail.com" class="contact-card">
+      <div class="contact-icon">📧</div>
+      <div><div class="contact-label">Email</div><div class="contact-val">lokeshlokip2006@gmail.com</div></div>
+    </a>
+    <a href="https://github.com/PLokesh" target="_blank" class="contact-card">
+      <div class="contact-icon">🐙</div>
+      <div><div class="contact-label">GitHub</div><div class="contact-val">github.com/PLokesh</div></div>
+    </a>
+    <a href="https://linkedin.com/in/plokesh" target="_blank" class="contact-card">
+      <div class="contact-icon">💼</div>
+      <div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/plokesh</div></div>
+    </a>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div><div class="contact-label">Location</div><div class="contact-val">Jogulamba Gadwal, TG</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built with ❤️ by P Lokesh &nbsp;|&nbsp; VIT-AP University &nbsp;|&nbsp; 2025
+</footer>
+
+</body>
+</html>
